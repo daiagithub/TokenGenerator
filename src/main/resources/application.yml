@@ -1,0 +1,11 @@
+server:  
+  port: 1234
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/project_ig?connectionTimeZone=Asia/Kolkata
+    username: root
+    password:
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

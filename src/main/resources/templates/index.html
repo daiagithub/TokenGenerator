@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>ITG</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+		.table td, .table th{padding: 0.28rem}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+
+		<div style="width: 100%; ">
+			<h3>Tickets</h3>
+			<div align="right"><a th:href="@{/generatenew}" class="btn btn-primary btn-sm mb-3">New Ticket</a></div>
+			<table style="width: 100%; min-width: 512px" border="1" class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th style="width: 256px">Date</th>
+						<th>User</th>
+						<th style="width: 128px">Ticket</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="a:${applications.content}">
+						<td th:text="${a.generatedDate}"></td>
+						<td th:text="${a.applicantName}"></td>
+						<td th:text="${a.applicationNo}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div th:if="${totalPages > 0}" style="display:inline" class="pagination" th:each="pageNumber : ${pageNumbers}">
+				<a th:href="@{/(page=${pageNumber})}" th:text="${pageNumber} + 1"
+					th:class="${pageNumber==applications.number + 1} ? active"></a>
+			</div>
+</body>
+
+</html>

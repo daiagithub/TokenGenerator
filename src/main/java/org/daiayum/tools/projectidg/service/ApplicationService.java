@@ -64,6 +64,14 @@ public class ApplicationService {
 		nextApplication.setApplicantName(applicationDto.getApplicantName());
 		nextApplication.setApplicationNo(nextApplicationNumber);
 		nextApplication.setGeneratedDate(new Date());
+		nextApplication.setDevice(applicationDto.getDevice());
+		
+		nextApplication.setDuration(applicationDto.getDuration());
+		nextApplication.setFee(applicationDto.getFee());
+		nextApplication.setImei(applicationDto.getImei());
+		nextApplication.setMobile(applicationDto.getMobile());
+		nextApplication.setReason(applicationDto.getReason());
+		
 		
 		return repository.save(nextApplication);
 	}

@@ -1,5 +1,6 @@
 package org.daiayum.tools.projectidg.api;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -19,10 +20,24 @@ public class ApplicationDTO {
 		this.setApplicantName(application.getApplicantName());
 		this.setApplicationNo(application.getApplicationNo());
 		this.setGeneratedDate(formatter.format(application.getGeneratedDate()));
+		setDevice(application.getDevice());
+		
+		setDuration(application.getDuration());
+		setFee(application.getFee());
+		setImei(application.getImei());
+		setMobile(application.getMobile());
+		setReason(application.getReason());
 	}
 	
 	private String applicationNo;
 	private String generatedDate;
 	private String applicantName;
+	private String reason;
+	private Integer duration;
+	private String mobile;
+	private String imei;
+	private String device;
+	private BigDecimal fee;
+	
 	
 }

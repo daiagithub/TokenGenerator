@@ -1,5 +1,6 @@
 package org.daiayum.tools.projectidg.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -11,11 +12,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Data
 @RequiredArgsConstructor
 @Entity
-@Getter
-@Setter
+@Data
 public class Application {
 
 	@Id
@@ -25,6 +24,11 @@ public class Application {
 	private Date generatedDate;
 	private String applicantName;
 	
-	
+	private String reason;
+	private Integer duration;
+	private String mobile;
+	private String imei;
+	private String device;
+	private BigDecimal fee;
 	
 }

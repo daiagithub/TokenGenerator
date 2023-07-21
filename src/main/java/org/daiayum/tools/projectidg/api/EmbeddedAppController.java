@@ -25,20 +25,17 @@ class EmbeddedAppController {
 
 	@GetMapping("/")
 	public String viewHomePage(Model model, @RequestParam(defaultValue = "0") int page) {
-		Page<Application> applications = service.getAllApplications(PageRequest.of(page, 10));
+		final int size = 10;
+		Page<Application> applications = service.getAllApplications(PageRequest.of(page, size));
 		model.addAttribute("applications", applications);
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", applications.getTotalPages());
-		
-		 if (applications.getTotalPages() > 0) {
-	            List<Integer> pageNumbers = IntStream.rangeClosed(0, applications.getTotalPages() - 1)
-	                .boxed()
-	                .collect(Collectors.toList());
-	            model.addAttribute("pageNumbers", pageNumbers);
-	        }
-		System.out.println(applications.getTotalPages());
-		System.out.println(applications.getTotalElements());
-		System.out.println(applications.getContent().size());
+		int totalPages = applications.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(0, totalPages - 1)
+                .boxed()
+                .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+            
+        }
 		return "index";
 	}
 
